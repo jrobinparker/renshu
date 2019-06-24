@@ -8,6 +8,11 @@ const passport = require('passport');
 // Load user model
 const User = require('../../models/User');
 
+// Input validation
+const validateRegistrationInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
+
+
 // @route GET api/users/test
 // @desc Test users route
 // @access Public
@@ -17,10 +22,17 @@ router.get('/test', (req, res) => res.json({ msg: 'Users route works' }));
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegistrationInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
+
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
-        return res.status(400).json({ email: 'That email already exists!'})
+        errors.email = 'Email already exists!'
+        return res.status(400).json(errors)
       } else {
         const newUser = new User({
           name: req.body.name,
@@ -34,7 +46,7 @@ router.post('/register', (req, res) => {
             newUser.password = hash;
             newUser.save()
               .then(user => res.json(user))
-              .catch(err => console.log(err));
+              .catch(err => rs.json(err))
           })
         })
       }
@@ -45,25 +57,26 @@ router.post('/register', (req, res) => {
 // @desc Login user / return jwt token
 // @access Public
 router.post('/login', (req, res) => {
+
+  const { errors, isValid } = validateLoginInput(req.body)
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
-  // find user by email
   User.findOne({ email })
     .then(user => {
       if (!user) {
-        return res.status(404).json({ email: 'User not found!' })
+        errors.email = 'User not found.'
+        return res.status(400).json(errors)
       }
 
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            // match user and create jwt payload
-            const payload = {
-              id: user.id,
-              name: user.name
-            }
-            // sign token
+            const payload = { id: user.id, name: user.name };
             jwt.sign(
               payload,
               keys.secretOrKey,
@@ -72,11 +85,12 @@ router.post('/login', (req, res) => {
                 res.json({
                   success: true,
                   token: 'Bearer ' + token
-                });
+                })
               }
             )
           } else {
-            return res.status(400).json({ password: 'Password incorrect' })
+            errors.password = 'Password incorrect.'
+            return res.status(400).json(errors)
           }
         })
     })
