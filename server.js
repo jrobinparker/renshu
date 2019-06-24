@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
-const users = require('./routes/api/users');
-const profile = require('./routes/api/profile');
-const lessons = require('./routes/api/lessons');
-const courses = require('./routes/api/courses');
+const users = require('./server/routes/api/users')
+const lessons = require('./server/routes/api/lessons')
+const courses = require('./server/routes/api/courses')
+const profile = require('./server/routes/api/profile')
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Setup
-const db = require('./config/keys').mongoURI;
+const db = require('./server/config/keys').mongoURI;
 
 // Connect to DB
 mongoose.connect(db).then(() => console.log('MongoDB connected')).catch(err => console.log(err));
@@ -24,7 +24,7 @@ mongoose.connect(db).then(() => console.log('MongoDB connected')).catch(err => c
 app.use(passport.initialize());
 
 // Passport config
-require('./config/passport')(passport);
+require('./server/config/passport')(passport);
 
 // Routes
 app.use('/api/users/', users);
