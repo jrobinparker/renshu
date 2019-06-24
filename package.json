@@ -4,7 +4,9 @@
   "description": "Community-driven Japanese learning and practice app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Jeremy Parker",
   "license": "MIT",
