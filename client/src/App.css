@@ -1,0 +1,35 @@
+#App {
+  height: 100vh;
+}
+
+body {
+  background-color: #74EBD5;
+  background-image: -webkit-linear-gradient(bottom, #74EBD5 0%, #9FACE6 100%);
+  background-image: -o-linear-gradient(bottom, #74EBD5 0%, #9FACE6 100%);
+  background-image: linear-gradient(to top, #74EBD5 0%, #9FACE6 100%);
+  background-repeat: no-repeat;
+}
+
+.renshu-container {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.with-shadow {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(164,188,194,1);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(164,188,194,1);
+  box-shadow: 0px 0px 15px 0px rgba(164,188,194,1);
+}
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 20px;
+  background-color: rgba(192,192,192, .5);
+}
