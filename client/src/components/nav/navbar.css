@@ -1,0 +1,20 @@
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: sticky top;
+}
+
+.navbar.logo {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.navbar.links {
+  display: inline-block;
+}
+
+.navbar.link {
+  padding: 0px 5px 0px 5px;
+}

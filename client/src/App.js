@@ -6,6 +6,7 @@ import './App.css';
 
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Navbar from './components/nav/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 
 
@@ -15,10 +16,13 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <div id="App">
-              <div className="ui container">
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
+              <Navbar />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+                <div id="page-wrap">
+                <div className="ui container">
                 <Route exact path="/dashboard" component={Dashboard} />
+              </div>
               </div>
             </div>
           </Router>
