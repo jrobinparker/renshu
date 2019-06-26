@@ -13,6 +13,9 @@ import Register from './components/auth/Register';
 import Navbar from './components/nav/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 
+import CreateProfile from './components/profile/CreateProfile';
+
+
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -37,6 +40,8 @@ class App extends Component {
                 <div id="page-wrap">
                 <div className="ui container">
                 <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/profile/create" component={CreateProfile} />
+
               </div>
               </div>
             </div>

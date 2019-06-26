@@ -8,12 +8,12 @@ const ProfileUserWidget = props => {
     return (
         <div className="ui card">
           <div className="image" style={{ paddingBottom: '15px' }}>
-          <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light' alt='profile avatar'
+          <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light" alt="profile avatar"
           />
           </div>
           <div className="content">
             <div style={{ display: 'inline-block' }}>
-              <h4 style={{ display: 'inline-block', marginRight: '5px' }}><Link to={`/profile/${profile.handle}`}>{profile.handle}</Link></h4>
+              <h4 style={{ display: 'inline-block', marginLeft: '20px' }}><Link to={`/profile/${profile.handle}`}>{profile.handle}</Link></h4>
               <LevelBadge level={profile.level} style={{ display: 'inline-block' }}/>
             </div>
           </div>

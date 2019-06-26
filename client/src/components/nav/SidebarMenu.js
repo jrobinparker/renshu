@@ -23,7 +23,7 @@ class SidebarMenu extends React.Component {
 
         <ul style={{ listStyle: 'none', paddingTop: '20px', paddingRight: '30px', fontSize: '1.5rem' }}>
           <li style={{ marginBottom: '20px' }}>dashboard</li>
-          <li style={{ marginBottom: '20px' }}>logout</li>
+          <li style={{ marginBottom: '20px' }} onClick={this.onLogoutClick}>logout</li>
         </ul>
       </div>
     )
