@@ -15,6 +15,7 @@ import Dashboard from './components/dashboard/Dashboard';
 
 import CreateProfile from './components/profile/CreateProfile';
 import Profile from './components/profile/Profile';
+import EditProfile from './components/profile/EditProfile';
 
 
 if (localStorage.jwtToken) {
@@ -43,6 +44,8 @@ class App extends Component {
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/profile/create" component={CreateProfile} />
                 <Route exact path="/profile/:handle" component={Profile} />
+                <Route exact path="/profile/:handle/edit" component={EditProfile} />
+
               </div>
               </div>
             </div>
