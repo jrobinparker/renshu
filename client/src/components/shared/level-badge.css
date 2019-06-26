@@ -1,0 +1,41 @@
+.level-badge {
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  background-color: #9708CC;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.n5 {
+  background-image: -webkit-linear-gradient(top left, #3B2667 10%, #BC78EC 100%);
+  background-image: -o-linear-gradient(top left, #3B2667 10%, #BC78EC 100%);
+  background-image: linear-gradient(to bottom right, #3B2667 10%, #BC78EC 100%);
+}
+
+.n4 {
+  background-image: -webkit-linear-gradient(top left, #FF6FD8 10%, #3813C2 100%);
+  background-image: -o-linear-gradient(top left, #FF6FD8 10%, #3813C2 100%);
+  background-image: linear-gradient(to bottom right, #FF6FD8 10%, #3813C2 100%);
+}
+
+.n3 {
+  background-image: -webkit-linear-gradient(top left, #43CBFF 10%, #9708CC 100%);
+  background-image: -o-linear-gradient(top left, #43CBFF 10%, #9708CC 100%);
+  background-image: linear-gradient(to bottom right, #43CBFF 10%, #9708CC 100%);
+}
+
+.n2 {
+  background-image: -webkit-linear-gradient(top left, #52E5E7 10%, #130CB7 100%);
+  background-image: -o-linear-gradient(top left, #52E5E7 10%, #130CB7 100%);
+  background-image: linear-gradient(to bottom right, #52E5E7 10%, #130CB7 100%);
+}
+
+
+.n1 {
+   background-image: -webkit-linear-gradient(top left, #2AFADF 10%, #4C83FF 100%);
+   background-image: -o-linear-gradient(top left, #2AFADF 10%, #4C83FF 100%);
+   background-image: linear-gradient(to bottom right, #2AFADF 10%, #4C83FF 100%);
+}

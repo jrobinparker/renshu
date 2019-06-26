@@ -2,13 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
+import DashboardProfile from './DashboardProfile';
 import Spinner from '../shared/Spinner';
+import LevelBadge from '../shared/LevelBadge';
+import './dashboard.css';
 
 class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.getCurrentProfile()
   }
+
 
   render() {
     const { user } = this.props.auth
@@ -22,7 +26,7 @@ class Dashboard extends React.Component {
       if (Object.keys(profile).length > 0) {
         userProfile = (
           <div className="three wide column">
-            <h1>welcome {user}!</h1>
+            <DashboardProfile profile={profile} />
           </div>
         )
 
@@ -41,10 +45,24 @@ class Dashboard extends React.Component {
       }
     }
 
+
     return (
         <div className="ui centered grid">
 
             {userProfile}
+            <div className="six wide column">
+              <div className="dashboard-list" id="with-shadow">
+                <h3 style={{ marginBottom: '10px '}}>Completed Lessons</h3>
+                <Link className="ui violet button" to="/dashboard" style={{ width: '100%' }}>View all completed lessons</Link>
+              </div>
+            </div>
+            <div className="six wide column">
+              <div className="dashboard-list" id="with-shadow">
+                <h3 style={{ marginBottom: '10px '}}>Completed Courses</h3>
+                <Link className="ui violet button" to="/dashboard" style={{ width: '100%' }}>View all completed courses</Link>
+              </div>
+            </div>
+
         </div>
 
 
@@ -54,7 +72,7 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile,
+  profile: state.profile
 })
 
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
