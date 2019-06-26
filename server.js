@@ -15,8 +15,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Setup
-const db = require('./server/config/keys').mongoURI;
-
+const db = require('./server/config/keys').mongoURI
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err))
+  
 // Connect to DB
 mongoose.connect(db).then(() => console.log('MongoDB connected')).catch(err => console.log(err));
 
