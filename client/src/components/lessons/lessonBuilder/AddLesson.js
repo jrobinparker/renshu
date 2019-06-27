@@ -1,6 +1,7 @@
 import React from 'react';
 import TitleAndDesc from './TitleAndDesc';
 import MainContent from './MainContent';
+import Video from './Video';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { addLesson } from '../../../actions/lessonActions';
@@ -13,7 +14,8 @@ class AddLesson extends React.Component {
     title: '',
     description: '',
     mainContent: '',
-    level: ''
+    level: '',
+    youtubeURL: ''
   }
 
   componentDidMount() {
@@ -22,8 +24,8 @@ class AddLesson extends React.Component {
 
   nextStep = () => {
     let currentStep = this.state.currentStep;
-    if (currentStep >= 2) {
-     currentStep = 2;
+    if (currentStep >= 3) {
+     currentStep = 3;
     } else {
       currentStep = currentStep + 1;
     }
@@ -86,6 +88,13 @@ class AddLesson extends React.Component {
                   prevStep={this.prevStep}
                   handleOnChangeDesc={this.handleOnChangeDesc}
                   mainContent={this.state.mainContent}
+                />
+      case 3:
+        return <Video
+                  nextStep={this.nextStep}
+                  prevStep={this.prevStep}
+                  handleOnChange={this.handleOnChange}
+                  youtubeURL={this.state.youtubeURL}
                 />
       default:
         return <TitleAndDesc

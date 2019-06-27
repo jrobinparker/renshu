@@ -6,7 +6,7 @@ class MainContent extends React.Component {
 
   saveAndContinue = e => {
     e.preventDefault()
-    console.log(this.props.mainContent)
+    this.props.nextStep()
   }
 
 
@@ -21,7 +21,7 @@ class MainContent extends React.Component {
       <div className="lesson-form with-shadow">
       <form className="ui form">
         <div className="field">
-          <label>Lesson Content</label>
+          <h3>Lesson Content</h3>
           <CKEditor
             editor={ ClassicEditor }
             config={{ rows: '40%' }}
