@@ -19,7 +19,7 @@ import Profile from './components/profile/Profile';
 import EditProfile from './components/profile/EditProfile';
 
 import Lessons from './components/lessons/Lessons';
-
+import AddLesson from './components/lessons/lessonBuilder/AddLesson';
 
 
 if (localStorage.jwtToken) {
@@ -50,7 +50,7 @@ class App extends Component {
                 <Switch><PrivateRoute exact path="/profile/:handle" component={Profile} /></Switch>
                 <Switch><PrivateRoute exact path="/profile/:handle/edit" component={EditProfile} /></Switch>
                 <Switch><PrivateRoute exact path="/lessons" component={Lessons} /></Switch>
-
+                <Switch><PrivateRoute exact path="/lessons/new" component={AddLesson} /></Switch>
               </div>
               </div>
             </div>
