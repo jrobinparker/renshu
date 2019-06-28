@@ -27,8 +27,8 @@ class AddLesson extends React.Component {
 
   nextStep = () => {
     let currentStep = this.state.currentStep;
-    if (currentStep >= 5) {
-     currentStep = 5;
+    if (currentStep >= 6) {
+     currentStep = 6;
     } else {
       currentStep = currentStep + 1;
     }
@@ -149,6 +149,9 @@ class AddLesson extends React.Component {
                   lesson={this.state}
                   onSubmit={this.handleOnSubmit}
                 />
+      case 6:
+        return <Redirect
+          push to='/dashboard' />
       default:
         return <TitleAndDesc
                   nextStep={this.nextStep}
