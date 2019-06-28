@@ -12,7 +12,7 @@ class LessonItem extends React.Component {
 
       <div className="ui card with-shadow">
         <div className="content">
-          <Link to={`/lesson/${lesson._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{lesson.title}</Link><LevelBadge level={lesson.level} />
+          <Link to={`/lessons/${lesson._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{lesson.title}</Link><LevelBadge level={lesson.level} />
         </div>
         <div className="content">
           <div className="ui small feed">

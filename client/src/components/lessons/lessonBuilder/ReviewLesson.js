@@ -1,7 +1,7 @@
 import React from 'react';
-import FlashCardPreviewModal from './modals/FlashCardPreviewModal';
-import VideoPreviewModal from './modals/VideoPreviewModal';
-import MainContentPreviewModal from './modals/MainContentPreviewModal';
+import FlashCardPreviewModal from '../modals/FlashCardPreviewModal';
+import VideoPreviewModal from '../modals/VideoPreviewModal';
+import MainContentPreviewModal from '../modals/MainContentPreviewModal';
 
 class ReviewLesson extends React.Component {
   state = {

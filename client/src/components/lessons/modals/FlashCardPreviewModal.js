@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FlashCardDeck from '../../flashCards/FlashCardDeck';
+import FlashCardDeck from '../flashCards/FlashCardDeck';
 
 class FlashCardPreviewModal extends React.Component {
   render() {
