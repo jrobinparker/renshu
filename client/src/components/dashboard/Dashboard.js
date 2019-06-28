@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
+import { getLessons } from '../../actions/lessonActions';
 import DashboardProfile from './DashboardProfile';
 import Spinner from '../shared/Spinner';
 import LevelBadge from '../shared/LevelBadge';
@@ -17,8 +18,8 @@ class Dashboard extends React.Component {
   render() {
     const { user } = this.props.auth
     const { profile, loading } = this.props.profile
-
-    let userProfile
+    const { lessons } = this.props
+    let userProfile, completedLessons, userCompletedLessons
 
     if (profile === null || loading) {
       userProfile = <Spinner />
@@ -45,17 +46,49 @@ class Dashboard extends React.Component {
       }
     }
 
+    if (profile && Object.keys(profile).length > 0 && lessons) {
+      completedLessons = lessons.filter(lesson => {
+        return lesson.completes.find(c => c.user === user.id)
+      })
 
+     if (completedLessons.length >= 1) {
+       userCompletedLessons = (
+         <div className="six wide column">
+           <div className="dashboard-list" id="with-shadow">
+             <h3 style={{ marginBottom: '10px '}}>Completed Lessons</h3>
+             {completedLessons.splice(0, 5).map(lesson => {
+                 return (
+                     <div className="ui list">
+                       <a className="item">
+                         <i className="right triangle icon" />
+                         <div className="content">
+                           <div className="header" style={{ fontSize: '1.5rem', marginBottom: '10px' }}><Link to={`/lesson/${lesson._id}`}>{lesson.title}</Link>
+                           </div>
+                          </div>
+                       </a>
+                     </div>
+                   )}
+                )}
+                <Link className="ui violet button" to="/mycompletes" style={{ width: '100%' }}>View all completed lessons</Link>
+
+        </div>
+      </div>
+    )} else {
+      userCompletedLessons = (
+        <div className="six wide column">
+          <div className="dashboard-list" id="with-shadow">
+           <h3 style={{ textAlign: 'center' }}>You haven't completed any lessons yet!</h3>
+             <Link className="ui violet button" style={{ width: '100%' }} to='/lessons'>Get Started</Link>
+          </div>
+        </div>
+      )
+    }
+    }
     return (
         <div className="ui centered grid">
 
             {userProfile}
-            <div className="six wide column">
-              <div className="dashboard-list" id="with-shadow">
-                <h3 style={{ marginBottom: '10px '}}>Completed Lessons</h3>
-                <Link className="ui violet button" to="/dashboard" style={{ width: '100%' }}>View all completed lessons</Link>
-              </div>
-            </div>
+            {userCompletedLessons}
             <div className="six wide column">
               <div className="dashboard-list" id="with-shadow">
                 <h3 style={{ marginBottom: '10px '}}>Completed Courses</h3>
@@ -73,7 +106,8 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
+  lessons: state.lesson.lessons
 })
 
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
