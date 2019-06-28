@@ -61,3 +61,19 @@ export const deleteLesson = (id) => dispatch => {
         payload: id
       }))
 }
+
+export const addLike = (id) => dispatch => {
+  axios.post(`/api/lessons/like/${id}`).then(res => dispatch(getLesson(id)))
+}
+
+export const removeLike = (id) => dispatch => {
+  axios.post(`/api/lessons/unlike/${id}`).then(res => dispatch(getLesson(id)))
+}
+
+export const addComplete = (id) => dispatch => {
+  axios.post(`/api/lessons/complete/${id}`).then(res => dispatch(getLesson(id)))
+}
+
+export const removeComplete = (id) => dispatch => {
+  axios.post(`/api/lessons/uncomplete/${id}`).then(res => dispatch(getLesson(id)))
+}

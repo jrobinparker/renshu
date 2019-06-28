@@ -6,6 +6,7 @@ import FlashCardPreviewModal from '../modals/FlashCardPreviewModal';
 import VideoPreviewModal from '../modals/VideoPreviewModal';
 import MainContentDisplay from './MainContentDisplay';
 import LessonFeaturesBar from './LessonFeaturesBar';
+import LessonDataBar from './LessonDataBar';
 import '../lessons.css';
 import Moment from 'react-moment';
 import LevelBadge from '../../shared/LevelBadge'
@@ -74,6 +75,7 @@ class LessonContent extends React.Component {
               <Moment format="MM/DD/YYYY">{lesson.created}</Moment></div>
               <div className="ui horizontal segments" style={{ backgroundColor: 'white', textAlign: 'center' }}>
 
+                <LessonDataBar lesson={lesson} />
 
               </div>
 
