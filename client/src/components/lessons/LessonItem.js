@@ -7,12 +7,24 @@ import Moment from 'react-moment';
 class LessonItem extends React.Component {
 
   render() {
-    const { lesson } = this.props
+    const { lesson, user } = this.props
+    const { completes } = lesson
+    let didComplete = false
+    const completeList = lesson.completes.map(complete => {
+      if (complete.user === user.id) {
+        didComplete = true
+      }
+    })
+
     return (
 
       <div className="ui card with-shadow">
         <div className="content">
-          <Link to={`/lessons/${lesson._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{lesson.title}</Link><LevelBadge level={lesson.level} />
+          <Link to={`/lesson/${lesson._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{lesson.title}</Link><LevelBadge level={lesson.level} /> {didComplete ? (
+            <i className="check circle outline icon" style={{ color: 'green', fontSize: '1.25rem' }} />
+          ) : (
+            <i className="check circle outline icon" style={{ color: 'gray', fontSize: '1.25rem' }} />
+          )}
         </div>
         <div className="content">
           <div className="ui small feed">

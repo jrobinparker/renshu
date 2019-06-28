@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getLessons } from '../../actions/lessonActions';
+import { getCurrentProfile } from '../../actions/profileActions'
 import LessonFeed from './LessonFeed'
 import Spinner from '../shared/Spinner';
 
 class Lessons extends React.Component {
   componentDidMount() {
     this.props.getLessons()
+    this.props.getCurrentProfile()
   }
 
   render() {
@@ -21,9 +23,8 @@ class Lessons extends React.Component {
     if (lessons === null || loading) {
       lessonContent = <Spinner />
     } else {
-      lessonContent = <LessonFeed lessons={lessons} />
+      lessonContent = <LessonFeed lessons={lessons} user={this.props.auth.user} />
     }
-    
     return (
       <React.Fragment>
           {lessonContent}
@@ -37,4 +38,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { getLessons })(Lessons)
+export default connect(mapStateToProps, { getLessons, getCurrentProfile })(Lessons)

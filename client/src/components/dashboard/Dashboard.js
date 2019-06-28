@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.getCurrentProfile()
+    this.props.getLessons()
   }
 
 
@@ -110,4 +111,4 @@ const mapStateToProps = state => ({
   lessons: state.lesson.lessons
 })
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
+export default connect(mapStateToProps, { getCurrentProfile, getLessons })(Dashboard)
