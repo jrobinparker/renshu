@@ -32,3 +32,45 @@
   border-radius: 5px;
   background-color: white;
 }
+
+.cardBuilderCard {
+  display: inline-block;
+  padding: 10px;
+  border: 1px lightgrey solid;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.card {
+  text-align: center;
+  padding: 50px;
+  font-size: 2rem;
+}
+
+.nextArrow {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  font-size: 2rem;
+}
+
+.prevArrow {
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  font-size: 2rem;
+}
+
+.deckNav {
+  margin-top: 5px;
+  padding: 25px 0 25px 0;
+  border-top: 1px lightgray solid;
+}
+
+.cardBuilderCard {
+  display: inline-block;
+  padding: 10px;
+  border: 1px lightgrey solid;
+  border-radius: 5px;
+  background-color: white;
+}

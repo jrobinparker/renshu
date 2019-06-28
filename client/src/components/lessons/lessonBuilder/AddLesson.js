@@ -2,6 +2,8 @@ import React from 'react';
 import TitleAndDesc from './TitleAndDesc';
 import MainContent from './MainContent';
 import Video from './Video';
+import FlashCardBuilder from './FlashCardBuilder';
+import ReviewLesson from './ReviewLesson';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { addLesson } from '../../../actions/lessonActions';
@@ -15,7 +17,8 @@ class AddLesson extends React.Component {
     description: '',
     mainContent: '',
     level: '',
-    youtubeURL: ''
+    youtubeURL: '',
+    flashCards: []
   }
 
   componentDidMount() {
@@ -24,8 +27,8 @@ class AddLesson extends React.Component {
 
   nextStep = () => {
     let currentStep = this.state.currentStep;
-    if (currentStep >= 3) {
-     currentStep = 3;
+    if (currentStep >= 5) {
+     currentStep = 5;
     } else {
       currentStep = currentStep + 1;
     }
@@ -60,12 +63,48 @@ class AddLesson extends React.Component {
     })
   }
 
+  handleOnChangeCard = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleAddDeck = (newDeck) => {
+    this.setState({
+      flashCards: this.state.flashCards.concat(newDeck),
+    })
+  }
+
+  handleCardUpdate = (editedCard) => {
+    const newCard = { front: editedCard.front, back: editedCard.back, key: editedCard.key }
+    this.setState(state => ({
+      flashCards: this.state.flashCards.map((card, i) => {
+      if (i === newCard.key) {
+        return {front: newCard.front, back: newCard.back}
+      } else {
+        return card
+      }
+    })
+    })
+    )
+  }
+
+  handleRemoveCard = key => {
+      this.setState({
+        flashCards: this.state.flashCards.filter(i => i !== key)
+      })
+    }
+
   handleOnSubmit = e => {
     e.preventDefault()
     const lessonData = {
       title: this.state.title,
       level: this.state.level,
       description: this.state.description,
+      youtubeURL: this.state.youtubeURL,
+      flashCards: this.state.flashCards,
+      author: this.props.profile.handle,
+      authorId: this.props.auth.user.id
     }
     this.props.addLesson(lessonData)
     this.nextStep()
@@ -95,6 +134,20 @@ class AddLesson extends React.Component {
                   prevStep={this.prevStep}
                   handleOnChange={this.handleOnChange}
                   youtubeURL={this.state.youtubeURL}
+                />
+      case 4:
+        return <FlashCardBuilder
+                  nextStep={this.nextStep}
+                  prevStep={this.prevStep}
+                  handleOnChangeCard={this.handleOnChangeCard}
+                  handleAddDeck={this.handleAddDeck}
+                  flashCards={this.state.flashCards}
+                />
+      case 5:
+        return <ReviewLesson
+                  prevStep={this.prevStep}
+                  lesson={this.state}
+                  onSubmit={this.handleOnSubmit}
                 />
       default:
         return <TitleAndDesc
