@@ -23,6 +23,7 @@ import AddLesson from './components/lessons/lessonBuilder/AddLesson';
 import Lesson from './components/lessons/lessonContent/Lesson';
 
 import Courses from './components/courses/Courses';
+import AddCourse from './components/courses/courseBuilder/AddCourse';
 
 
 if (localStorage.jwtToken) {
@@ -56,6 +57,7 @@ class App extends Component {
                 <Switch><PrivateRoute exact path="/lessons/new" component={AddLesson} /></Switch>
                 <Switch><PrivateRoute exact path="/lessons/:id" component={Lesson} /></Switch>
                 <Switch><PrivateRoute exact path="/courses" component={Courses} /></Switch>
+                <Switch><PrivateRoute exact path="/courses/new" component={AddCourse} /></Switch>
               </div>
               </div>
             </div>
