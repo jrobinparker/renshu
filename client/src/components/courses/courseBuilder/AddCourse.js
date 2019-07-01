@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getCurrentProfile } from '../../../actions/profileActions';
 import { getLessons } from '../../../actions/lessonActions';
+import { addCourse } from '../../../actions/courseActions';
 import TitleAndDesc from './TitleAndDesc';
 import AddLessons from './AddLessons';
 import ReorderLessons from './ReorderLessons';
+import ReviewCourse from './ReviewCourse';
 
 class AddCourse extends React.Component {
   state = {
@@ -25,8 +27,8 @@ class AddCourse extends React.Component {
   nextStep = () => {
     let currentStep = this.state.currentStep;
    // Make sure currentStep is set to something reasonable
-    if (currentStep >= 3) {
-     currentStep = 3;
+    if (currentStep >= 5) {
+     currentStep = 5;
     } else {
       currentStep = currentStep + 1;
     }
@@ -107,14 +109,30 @@ class AddCourse extends React.Component {
                   lessons={this.state.lessons}
                   updateLessonOrder={this.updateLessonOrder}
                 />
-      default:
-        return <TitleAndDesc
-                nextStep={this.nextStep}
-                handleOnChange={this.handleOnChange}
-                title={title}
-                description={description}
-                level={level}
-              />
+        case 4:
+          return <ReviewCourse
+                    prevStep={this.prevStep}
+                    course={this.state}
+                    onSubmit={this.handleOnSubmit}
+                  />
+        case 5:
+          return <Redirect
+            push to={{
+              pathname: '/dashboard',
+              state: {
+                newCourse: true,
+                newLesson: false,
+                editedCourse: false,
+                editedLesson: false
+             }}} />
+        default:
+          return <TitleAndDesc
+                  nextStep={this.nextStep}
+                  handleOnChange={this.handleOnChange}
+                  title={title}
+                  description={description}
+                  level={level}
+                />
     }
   }
 }
@@ -125,4 +143,4 @@ const mapStateToProps = state => ({
   lessons: state.lesson.lessons
 })
 
-export default connect(mapStateToProps, { getCurrentProfile, getLessons })(AddCourse)
+export default connect(mapStateToProps, { getCurrentProfile, getLessons, addCourse })(AddCourse)
