@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getCurrentProfile } from '../../../actions/profileActions';
+import { getLessons } from '../../../actions/lessonActions';
 import TitleAndDesc from './TitleAndDesc';
-
+import AddLessons from './AddLessons';
+import ReorderLessons from './ReorderLessons';
 
 class AddCourse extends React.Component {
   state = {
@@ -17,13 +19,14 @@ class AddCourse extends React.Component {
 
   componentDidMount() {
     this.props.getCurrentProfile()
+    this.props.getLessons()
   }
 
   nextStep = () => {
     let currentStep = this.state.currentStep;
    // Make sure currentStep is set to something reasonable
-    if (currentStep >= 2) {
-     currentStep = 2;
+    if (currentStep >= 3) {
+     currentStep = 3;
     } else {
       currentStep = currentStep + 1;
     }
@@ -90,6 +93,20 @@ class AddCourse extends React.Component {
                   description={description}
                   level={level}
                 />
+      case 2:
+        return <AddLessons
+                  nextStep={this.nextStep}
+                  prevStep={this.prevStep}
+                  lessons={this.props.lessons}
+                  addLessons={this.addLessons}
+                />
+      case 3:
+        return <ReorderLessons
+                  nextStep={this.nextStep}
+                  prevStep={this.prevStep}
+                  lessons={this.state.lessons}
+                  updateLessonOrder={this.updateLessonOrder}
+                />
       default:
         return <TitleAndDesc
                 nextStep={this.nextStep}
@@ -104,7 +121,8 @@ class AddCourse extends React.Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile.profile
+  profile: state.profile.profile,
+  lessons: state.lesson.lessons
 })
 
-export default connect(mapStateToProps, { getCurrentProfile })(AddCourse)
+export default connect(mapStateToProps, { getCurrentProfile, getLessons })(AddCourse)

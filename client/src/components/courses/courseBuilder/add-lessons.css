@@ -1,0 +1,21 @@
+.add-lesson-title {
+  text-align: center;
+}
+
+.add-lessons {
+  height: 40%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.add-lesson-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px;
+}
+
+.add-lesson-item:hover {
+  width: 100%;
+  background-color: lightgray;
+}
