@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
 import { getLessons } from '../../actions/lessonActions';
 import DashboardProfile from './DashboardProfile';
+import DashboardCompletedLessons from './DashboardCompletedLessons';
 import Spinner from '../shared/Spinner';
 import LevelBadge from '../shared/LevelBadge';
 import './dashboard.css';
@@ -53,28 +54,8 @@ class Dashboard extends React.Component {
       })
 
      if (completedLessons.length >= 1) {
-       userCompletedLessons = (
-         <div className="six wide column">
-           <div className="dashboard-list" id="with-shadow">
-             <h3 style={{ marginBottom: '10px '}}>Completed Lessons</h3>
-             {completedLessons.splice(0, 5).map(lesson => {
-                 return (
-                     <div className="ui list">
-                       <a className="item">
-                         <i className="right triangle icon" />
-                         <div className="content">
-                           <div className="header" style={{ fontSize: '1.5rem', marginBottom: '10px' }}><Link to={`/lesson/${lesson._id}`}>{lesson.title}</Link>
-                           </div>
-                          </div>
-                       </a>
-                     </div>
-                   )}
-                )}
-                <Link className="ui violet button" to="/mycompletes" style={{ width: '100%' }}>View all completed lessons</Link>
-
-        </div>
-      </div>
-    )} else {
+       userCompletedLessons = <DashboardCompletedLessons lessons={completedLessons} />
+     } else {
       userCompletedLessons = (
         <div className="six wide column">
           <div className="dashboard-list" id="with-shadow">

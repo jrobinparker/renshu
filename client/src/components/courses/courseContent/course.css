@@ -1,0 +1,15 @@
+.course-lesson-container {
+  padding-top: -20px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.course-lesson-description {
+  margin-left: 50px;
+}
+
+.launch-button {
+  width: 100%;
+}

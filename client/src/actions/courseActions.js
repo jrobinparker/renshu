@@ -78,3 +78,19 @@ export const deleteCourse = (id) => dispatch => {
         payload: id
       }))
 }
+
+export const addLike = (id) => dispatch => {
+  axios.post(`/api/courses/like/${id}`).then(res => dispatch(getCourse(id)))
+}
+
+export const removeLike = (id) => dispatch => {
+  axios.post(`/api/courses/unlike/${id}`).then(res => dispatch(getCourse(id)))
+}
+
+export const addComplete = (id) => dispatch => {
+  axios.post(`/api/courses/complete/${id}`).then(res => dispatch(getCourse(id)))
+}
+
+export const removeComplete = (id) => dispatch => {
+  axios.post(`/api/courses/uncomplete/${id}`).then(res => dispatch(getCourse(id)))
+}
