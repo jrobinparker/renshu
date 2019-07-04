@@ -7,6 +7,7 @@ import { getCourses } from '../../actions/courseActions';
 import DashboardProfile from './DashboardProfile';
 import DashboardCompletedLessons from './DashboardCompletedLessons';
 import DashboardCompletedCourses from './DashboardCompletedCourses';
+import ContentSlider from './ContentSlider';
 import Spinner from '../shared/Spinner';
 import LevelBadge from '../shared/LevelBadge';
 import './dashboard.css';
@@ -24,7 +25,7 @@ class Dashboard extends React.Component {
     const { user } = this.props.auth
     const { profile, loading } = this.props.profile
     const { lessons, courses } = this.props
-    let userProfile, completedLessons, dashboardCompletedLessons, completedCourses, dashboardCompletedCourses
+    let userProfile, completedLessons, dashboardCompletedLessons, completedCourses, dashboardCompletedCourses, userLevelLessons, lessonsSlider, userLevelCourses, coursesSlider
 
     if (profile === null || loading) {
       userProfile = <Spinner />
@@ -68,6 +69,29 @@ class Dashboard extends React.Component {
         </div>
       )
     }
+
+    userLevelLessons = lessons.filter(lesson => {
+        return lesson.level === profile.level
+      })
+
+    lessonsSlider =  (
+        <div className="five wide column" style={{ marginTop: '10px' }}>
+          <h4>{profile.level} lessons:</h4>
+          <ContentSlider lessons={userLevelLessons} user={this.props.auth.user} />
+        </div>
+    )
+
+    userLevelCourses = courses.filter(course => {
+        return course.level === profile.level
+      })
+
+    coursesSlider =  (
+        <div className="five wide column" style={{ marginTop: '10px', marginLeft: '50px' }}>
+          <h4>{profile.level} courses:</h4>
+          <ContentSlider courses={userLevelCourses} user={this.props.auth.user} />
+        </div>
+    )
+
     }
 
     if (profile && Object.keys(profile).length > 0 && courses) {
@@ -91,12 +115,11 @@ class Dashboard extends React.Component {
 
     return (
         <div className="ui centered grid">
-
             {userProfile}
             {dashboardCompletedLessons}
             {dashboardCompletedCourses}
-
-
+            {lessonsSlider}
+            {coursesSlider}
         </div>
 
 
