@@ -1,0 +1,12 @@
+
+.my-edit-icon {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.my-delete-icon {
+  display: inline-block;
+  color: red;
+  cursor: pointer;
+}
