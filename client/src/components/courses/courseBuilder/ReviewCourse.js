@@ -27,7 +27,7 @@ class ReviewCourse extends React.Component {
           <h3>Lessons:</h3>
           <ol>
           {lessons.map(lesson => {
-            return <li style={{ marginBottom: '10px', fontSize: '1.5rem' }}><Link to={`/lessons/${lesson._id}`} target="_blank" rel="noopener noreferrer">{lesson.title}</Link></li>
+            return <li style={{ marginBottom: '10px', fontSize: '1.5rem' }}><Link to={`/lesson/${lesson._id}`} target="_blank" rel="noopener noreferrer">{lesson.title}</Link></li>
           })}
           </ol>
 

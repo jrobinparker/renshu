@@ -61,19 +61,16 @@ class EditLessons extends React.Component {
     }
     this.setCheckedItems(this.state.lessons, this.props.lessons)
     return (
-        <div className="ui centered grid">
+      <div className="ui centered grid">
 
-          <div className="eight wide column">
-            <div
-              className="renshu-container with-shadow"
-              style={{
-                height: '50%',
-                width: '100%',
-                overflowY: 'scroll'
-              }}>
-            <div className="ui form">
-              <h1>Add Lessons</h1>
-              <div className="ui form" style={{ paddingRight: '20px' }}>
+        <div className="fifteen wide column">
+            <div className="renshu-container with-shadow">
+              <h3 style={{ textAlign: 'center' }}>Add/Remove Lessons</h3>
+            </div>
+          </div>
+        <div className="eight wide column" style={{ height: '100vh' }}>
+          <div className="renshu-container add-lessons with-shadow">
+          <div className="ui form">
                 {this.props.lessons.map((lesson, i) => {
                   return (
                     <div className="add-lesson-item" key={i}>
@@ -92,36 +89,37 @@ class EditLessons extends React.Component {
                     </div>
                   )
                 })}
-              </div>
-            </div>
-            </div>
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
-              <button
-                onClick={this.goBack}
-                className="ui secondary button"
-                style={{ width: '40%', marginRight: '50px' }}
-              >
-                Back
-              </button>
-              <button
-                onClick={this.saveAndContinue}
-                className="ui violet button"
-                style={{ width: '40%' }}
-              >
-                Next
-              </button>
-            </div>
-          </div>
+                </div>
 
-          <div className="seven wide column">
-            <div className="renshu-container with-shadow">
-              <h1>Course Lessons</h1>
-                <ul style={{ listStyle: 'none' }}>
-                {lessonsList}
-                </ul>
-            </div>
-          </div>
-          </div>
+                </div>
+              </div>
+
+              <div className="seven wide column">
+                <div className="renshu-container with-shadow">
+                  <h3>Course Lessons</h3>
+                    <ul style={{ listStyle: 'none' }}>
+                    {lessonsList}
+                    </ul>
+                </div>
+                  <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                    <button
+                      onClick={this.goBack}
+                      className="ui secondary button"
+                      style={{ width: '40%', marginRight: '50px' }}
+                    >
+                      Back
+                    </button>
+                    <button
+                      onClick={this.saveAndContinue}
+                      className="ui violet button"
+                      style={{ width: '40%' }}
+                    >
+                      Next
+                    </button>
+                  </div>
+              </div>
+
+              </div>
     )
   }
 }
