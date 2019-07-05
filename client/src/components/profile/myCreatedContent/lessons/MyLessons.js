@@ -1,8 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MyLesson from './MyLesson';
+import { connect } from 'react-redux';
+import { deleteLesson } from '../../../../actions/lessonActions';
 
 class MyLessons extends React.Component {
+  state = {
+    lessons: []
+  }
+
+  componentWillMount() {
+      this.setState({
+        lessons: [...this.props.lessons]
+      })
+  }
+
+  handleDeleteLesson = lesson => {
+    this.setState({
+      lessons: this.state.lessons.filter(l => l._id !== lesson._id)
+    })
+    this.props.deleteLesson(lesson._id)
+  }
 
   render() {
     const lessons = this.props.lessons.map(lesson => {
@@ -50,4 +68,4 @@ class MyLessons extends React.Component {
   }
 }
 
-export default MyLessons
+export default connect(null, { deleteLesson })(MyLessons)
