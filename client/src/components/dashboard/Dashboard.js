@@ -117,7 +117,7 @@ class Dashboard extends React.Component {
 
     lessonsSlider =  (
         <div className="five wide column" style={{ marginTop: '10px' }}>
-          <h4>{profile.level} lessons:</h4>
+          <h4>More {profile.level} lessons:</h4>
           <ContentSlider lessons={userLevelLessons} user={this.props.auth.user} />
         </div>
     )
@@ -128,7 +128,7 @@ class Dashboard extends React.Component {
 
     coursesSlider =  (
         <div className="five wide column" style={{ marginTop: '10px', marginLeft: '50px' }}>
-          <h4>{profile.level} courses:</h4>
+          <h4>More {profile.level} courses:</h4>
           <ContentSlider courses={userLevelCourses} user={this.props.auth.user} />
         </div>
     )

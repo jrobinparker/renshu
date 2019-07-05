@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
-import LessonItem from '../lessons/LessonItem';
-import CourseItem from '../courses/CourseItem';
+import LessonSliderItem from './LessonSliderItem';
+import CourseSliderItem from './CourseSliderItem';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -10,7 +10,8 @@ class ContentSlider extends React.Component {
       const settings = {
           dots: false,
           infinite: true,
-          slidesToShow: 1
+          slidesToShow: 1,
+          slidesToScroll: 1
         };
 
 
@@ -19,17 +20,17 @@ class ContentSlider extends React.Component {
               {this.props.lessons? (
                 this.props.lessons.map(lesson => {
                   return (
-                    <LessonItem
-                    key={lesson._id}
-                    lesson={lesson}
-                    user={this.props.user}
-                    />
+                      <LessonSliderItem
+                      key={lesson._id}
+                      lesson={lesson}
+                      user={this.props.user}
+                      />
                   )
                 })
               ) : (
                 this.props.courses.map(course => {
                   return (
-                    <CourseItem
+                    <CourseSliderItem
                     key={course._id}
                     course={course}
                     user={this.props.user}
