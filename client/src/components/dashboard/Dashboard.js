@@ -8,11 +8,18 @@ import DashboardProfile from './DashboardProfile';
 import DashboardCompletedLessons from './DashboardCompletedLessons';
 import DashboardCompletedCourses from './DashboardCompletedCourses';
 import ContentSlider from './ContentSlider';
+import Notification from './Notification';
 import Spinner from '../shared/Spinner';
 import LevelBadge from '../shared/LevelBadge';
 import './dashboard.css';
 
 class Dashboard extends React.Component {
+  state = {
+      newCourse: false,
+      newLesson: false,
+      editedCourse: false,
+      editedLesson: false
+    }
 
   componentDidMount() {
     this.props.getCurrentProfile()
@@ -20,12 +27,46 @@ class Dashboard extends React.Component {
     this.props.getCourses()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.state && nextProps.location.state.newCourse) {
+      this.setState({
+        newCourse: true,
+        newLesson: false,
+        editedCourse: false,
+        editedLesson: false
+      })
+    }
+    if (nextProps.location.state && nextProps.location.state.newLesson) {
+      this.setState({
+        newCourse: false,
+        newLesson: true,
+        editedCourse: false,
+        editedLesson: false
+      })
+    }
+    if (nextProps.location.state && nextProps.location.state.editedCourse) {
+      this.setState({
+        newCourse: false,
+        newLesson: false,
+        editedCourse: true,
+        editedLesson: false
+      })
+    }
+    if (nextProps.location.state && nextProps.location.state.editedLesson) {
+      this.setState({
+        newCourse: false,
+        newLesson: false,
+        editedCourse: false,
+        editedLesson: true
+      })
+    }
+  }
 
   render() {
     const { user } = this.props.auth
     const { profile, loading } = this.props.profile
     const { lessons, courses } = this.props
-    let userProfile, completedLessons, dashboardCompletedLessons, completedCourses, dashboardCompletedCourses, userLevelLessons, lessonsSlider, userLevelCourses, coursesSlider
+    let userProfile, completedLessons, dashboardCompletedLessons, completedCourses, dashboardCompletedCourses, userLevelLessons, lessonsSlider, userLevelCourses, coursesSlider, notification
 
     if (profile === null || loading) {
       userProfile = <Spinner />
@@ -113,8 +154,25 @@ class Dashboard extends React.Component {
     }
     }
 
+    if (this.state.newCourse) {
+      notification = <Notification type='courses' message='Course created!' />
+    }
+
+    if (this.state.newLesson) {
+      notification =  <Notification type='lessons' message='Lesson created!' />
+    }
+
+    if (this.state.editedCourse) {
+      notification =  <Notification type='courses' message='Course edited!' />
+    }
+
+    if (this.state.editedLesson) {
+      notification = <Notification type='lessons' message='Lesson edited!' />
+    }
+
     return (
         <div className="ui centered grid">
+            {notification}
             {userProfile}
             {dashboardCompletedLessons}
             {dashboardCompletedCourses}

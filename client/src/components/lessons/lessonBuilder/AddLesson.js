@@ -151,7 +151,15 @@ class AddLesson extends React.Component {
                 />
       case 6:
         return <Redirect
-          push to='/dashboard' />
+                push to={{
+                  pathname: '/dashboard',
+                  state: {
+                    newCourse: false,
+                    newLesson: true,
+                    editedCourse: false,
+                    editedLesson: false
+                  }
+                }} />
       default:
         return <TitleAndDesc
                   nextStep={this.nextStep}

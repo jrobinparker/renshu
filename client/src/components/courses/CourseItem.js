@@ -12,7 +12,7 @@ class CourseItem extends React.Component {
 
       <div className="ui card with-shadow">
         <div className="content">
-          <Link to={`/courses/${course._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{course.title}</Link>
+          <Link to={`/course/${course._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{course.title}</Link>
           <LevelBadge level={course.level} style={{ marginRight: '20px' }}/>
         </div>
         <div className="content">

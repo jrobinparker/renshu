@@ -20,7 +20,7 @@ class LessonItem extends React.Component {
 
       <div className="ui card with-shadow">
         <div className="content">
-          <Link to={`/lessons/${lesson._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{lesson.title}</Link><LevelBadge level={lesson.level} /> {didComplete ? (
+          <Link to={`/lesson/${lesson._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{lesson.title}</Link><LevelBadge level={lesson.level} /> {didComplete ? (
             <i className="check circle outline icon" style={{ color: 'green', fontSize: '1.25rem' }} />
           ) : (
             <i className="check circle outline icon" style={{ color: 'gray', fontSize: '1.25rem' }} />

@@ -34,3 +34,31 @@
   border-radius: 50%;
   margin: 10px;
 }
+
+.notification {
+    z-index: 100;
+    position: absolute;
+    right: -100%;
+    background: #B413EC;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 2s;
+}
+
+.notification a {
+  color: white;
+  font-weight: 700;
+}
+
+@-webkit-keyframes slide {
+    100% { right: 0; }
+}
+
+@keyframes slide {
+    100% { right: 0; }
+}

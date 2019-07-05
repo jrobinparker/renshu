@@ -23,7 +23,7 @@ class MyCourse extends React.Component {
   return (
       <tr>
         <td>
-          <Link to={`/courses/${course._id}`}>{course.title}</Link>
+          <Link to={`/course/${course._id}`}>{course.title}</Link>
         </td>
         <td className="ui center aligned">
           <Moment format="MM/DD/YYYY">{course.created}</Moment>
@@ -36,7 +36,7 @@ class MyCourse extends React.Component {
         </td>
         <td className="ui center aligned" style={{ fontSize: '1.25rem' }}>
           <Link
-            to={`/courses/${course._id}/edit`}
+            to={`/course/${course._id}/edit`}
             style={{ color: 'black' }}
           >
             <i

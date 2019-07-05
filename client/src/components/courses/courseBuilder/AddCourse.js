@@ -117,14 +117,15 @@ class AddCourse extends React.Component {
                   />
         case 5:
           return <Redirect
-            push to={{
-              pathname: '/dashboard',
-              state: {
-                newCourse: true,
-                newLesson: false,
-                editedCourse: false,
-                editedLesson: false
-             }}} />
+                    push to={{
+                      pathname: '/dashboard',
+                      state: {
+                        newCourse: true,
+                        newLesson: false,
+                        editedCourse: false,
+                        editedLesson: false
+                      }
+                    }} />
         default:
           return <TitleAndDesc
                   nextStep={this.nextStep}

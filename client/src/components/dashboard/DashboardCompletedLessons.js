@@ -12,7 +12,7 @@ const DashboardCompletedLessons = props => {
                   <a className="item">
                     <i className="right triangle icon" />
                     <div className="content">
-                      <div className="header" style={{ fontSize: '1.5rem', marginBottom: '10px' }}><Link to={`/lessons/${lesson._id}`}>{lesson.title}</Link>
+                      <div className="header" style={{ fontSize: '1.5rem', marginBottom: '10px' }}><Link to={`/lesson/${lesson._id}`}>{lesson.title}</Link>
                       </div>
                      </div>
                   </a>

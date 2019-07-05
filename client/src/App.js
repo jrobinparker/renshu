@@ -59,12 +59,12 @@ class App extends Component {
                 <Switch><PrivateRoute exact path="/profile/:handle/edit" component={EditProfile} /></Switch>
                 <Switch><PrivateRoute exact path="/lessons" component={Lessons} /></Switch>
                 <Switch><PrivateRoute exact path="/lessons/new" component={AddLesson} /></Switch>
-                <Switch><PrivateRoute exact path="/lessons/:id/edit" component={EditLesson} /></Switch>
-                <Switch><PrivateRoute exact path="/lessons/:id" component={Lesson} /></Switch>
+                <Switch><PrivateRoute exact path="/lesson/:id/edit" component={EditLesson} /></Switch>
+                <Switch><PrivateRoute exact path="/lesson/:id" component={Lesson} /></Switch>
                 <Switch><PrivateRoute exact path="/courses" component={Courses} /></Switch>
                 <Switch><PrivateRoute exact path="/courses/new" component={AddCourse} /></Switch>
-                <Switch><PrivateRoute exact path="/courses/:id" component={Course} /></Switch>
-                <Switch><PrivateRoute exact path="/courses/:id/edit" component={EditCourse} /></Switch>
+                <Switch><PrivateRoute exact path="/course/:id" component={Course} /></Switch>
+                <Switch><PrivateRoute exact path="/course/:id/edit" component={EditCourse} /></Switch>
                 <Switch><PrivateRoute exact path="/mycontent" component={MyCreatedContent} /></Switch>
               </div>
               </div>
