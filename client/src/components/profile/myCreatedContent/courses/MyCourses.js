@@ -1,8 +1,26 @@
 import React from 'react';
 import MyCourse from './MyCourse';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteCourse } from '../../../../actions/courseActions';
 
 class MyCourses extends React.Component {
+  state = {
+    courses: [],
+  }
+
+  componentWillMount() {
+      this.setState({
+        courses: [...this.props.courses]
+      })
+  }
+
+  handleDeleteCourse = course => {
+    this.setState({
+      courses: this.state.courses.filter(c => c._id !== course._id)
+    })
+    this.props.deleteCourse(course._id)
+  }
 
   render() {
     const courses = this.props.courses.map(course => {

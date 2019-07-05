@@ -25,6 +25,7 @@ import Lesson from './components/lessons/lessonContent/Lesson';
 
 import Courses from './components/courses/Courses';
 import AddCourse from './components/courses/courseBuilder/AddCourse';
+import EditCourse from './components/courses/courseBuilder/EditCourse';
 import Course from './components/courses/courseContent/Course';
 
 import MyCreatedContent from './components/profile/myCreatedContent/MyCreatedContent';
@@ -63,6 +64,7 @@ class App extends Component {
                 <Switch><PrivateRoute exact path="/courses" component={Courses} /></Switch>
                 <Switch><PrivateRoute exact path="/courses/new" component={AddCourse} /></Switch>
                 <Switch><PrivateRoute exact path="/courses/:id" component={Course} /></Switch>
+                <Switch><PrivateRoute exact path="/courses/:id/edit" component={EditCourse} /></Switch>
                 <Switch><PrivateRoute exact path="/mycontent" component={MyCreatedContent} /></Switch>
               </div>
               </div>
