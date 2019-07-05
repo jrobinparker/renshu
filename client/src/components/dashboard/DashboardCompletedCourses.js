@@ -19,7 +19,7 @@ const DashboardCompletedCourses = props => {
                 </div>
               )}
            )}
-           <Link className="ui violet button" to="/mycompletes" style={{ width: '100%' }}>View all completed courses</Link>
+           <Link className="ui violet button" to="/mycompleted" style={{ width: '100%' }}>View all completed courses</Link>
    </div>
  </div>
   )
