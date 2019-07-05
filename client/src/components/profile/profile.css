@@ -40,3 +40,8 @@
   left: 30%;
   cursor: pointer;
 }
+
+.profile-lessons-courses {
+  display: flex;
+  justify-content: center
+}

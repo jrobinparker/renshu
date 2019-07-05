@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getProfileByHandle } from '../../actions/profileActions';
-
+import { getLessons } from '../../actions/lessonActions';
+import { getCourses } from '../../actions/courseActions';
 import { Link } from 'react-router-dom';
+import ProfileCreatedCourses from './ProfileCreatedCourses';
+import ProfileCreatedLessons from './ProfileCreatedLessons';
 import Spinner from '../shared/Spinner';
 import LevelBadge from '../shared/LevelBadge';
 import SocialIcons from './SocialIcons';
@@ -12,11 +15,13 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.getProfileByHandle(this.props.match.params.handle)
+    this.props.getLessons()
+    this.props.getCourses()
   }
 
 
   render() {
-    let profile, profileInterests
+    let profile, profileInterests, createdLessons, createdCourses
 
     if (!this.props.profile.profile) {
       profile = <Spinner/>
@@ -81,10 +86,26 @@ class Profile extends React.Component {
       )
     }
 
+    if (!this.props.lessons) {
+      createdLessons = <Spinner />
+    } else {
+      createdLessons = <ProfileCreatedLessons lessons={this.props.lessons.splice(0, 5)} username={this.props.profile.profile.handle}/>
+    }
+
+    if (!this.props.courses) {
+      createdCourses = <Spinner />
+    } else {
+      createdCourses = <ProfileCreatedCourses courses={this.props.courses.splice(0, 5)} username={this.props.profile.profile.handle} />
+    }
+
 
     return (
       <div>
           {profile}
+          <div className="profile-lessons-courses">
+            {createdLessons}
+            {createdCourses}
+          </div>
       </div>
     )
   }
@@ -92,7 +113,9 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
+  lessons: state.lesson.lessons.filter(lesson => lesson.author === state.profile.profile.handle),
+  courses: state.course.courses.filter(course => course.author === state.profile.profile.handle)
 })
 
-export default connect(mapStateToProps, { getProfileByHandle })(Profile)
+export default connect(mapStateToProps, { getProfileByHandle, getLessons, getCourses })(Profile)

@@ -29,6 +29,7 @@ import EditCourse from './components/courses/courseBuilder/EditCourse';
 import Course from './components/courses/courseContent/Course';
 
 import MyCreatedContent from './components/profile/myCreatedContent/MyCreatedContent';
+import ViewUserContent from './components/profile/ViewUserContent';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -66,6 +67,7 @@ class App extends Component {
                 <Switch><PrivateRoute exact path="/course/:id" component={Course} /></Switch>
                 <Switch><PrivateRoute exact path="/course/:id/edit" component={EditCourse} /></Switch>
                 <Switch><PrivateRoute exact path="/mycontent" component={MyCreatedContent} /></Switch>
+                <Switch><PrivateRoute exact path="/profile/:handle/created-content" component={ViewUserContent} /></Switch>
               </div>
               </div>
             </div>

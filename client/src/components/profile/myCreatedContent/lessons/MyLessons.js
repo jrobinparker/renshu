@@ -41,7 +41,7 @@ class MyLessons extends React.Component {
     } else {
       lessonsList = (
         <React.Fragment>
-        <h3 style={{ }}>My created lessons</h3>
+        <h3>Lessons</h3>
         <table className="ui celled padded table">
           <thead>
             <tr>
