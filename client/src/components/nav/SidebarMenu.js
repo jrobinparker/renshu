@@ -8,10 +8,26 @@ import './sidebar.css'
 
 class SidebarMenu extends React.Component {
 
+  state = {
+    menuOpen: false
+  }
+
+  handleStateChange(state) {
+   this.setState({menuOpen: state.isOpen})
+  }
+
+  closeMenu() {
+    this.setState({menuOpen: false})
+  }
+
+  toggleMenu() {
+    this.setState(state => ({menuOpen: !state.menuOpen}))
+  }
+
   onLogoutClick = e => {
     this.props.clearCurrentProfile()
     this.props.logoutUser()
-    this.props.closeMenu()
+    this.closeMenu()
   }
 
 
@@ -20,10 +36,15 @@ class SidebarMenu extends React.Component {
 
     const authLinks = (
       <div>
-
         <ul style={{ listStyle: 'none', paddingTop: '20px', paddingRight: '30px', fontSize: '1.5rem' }}>
-          <li style={{ marginBottom: '20px' }}>dashboard</li>
-          <li style={{ marginBottom: '20px' }} onClick={this.onLogoutClick}>logout</li>
+          <li className="menu-item"><Link to="/dashboard"  onClick={this.closeMenu.bind(this)}>dashboard</Link></li>
+          <li className="menu-item"><Link to="/mycontent" onClick={this.closeMenu.bind(this)}>my created content</Link></li>
+          <li className="menu-item"><Link to="/mycompleted" onClick={this.closeMenu.bind(this)}>my completes</Link></li>
+          <li className="menu-item"><Link to="/lessons" onClick={this.closeMenu.bind(this)}>lessons</Link></li>
+          <li className="menu-item"><Link to="/courses" onClick={this.closeMenu.bind(this)}>courses</Link></li>
+          <li className="menu-item"><Link to="/lessons/new" onClick={this.closeMenu.bind(this)}>create a lesson</Link></li>
+          <li className="menu-item"><Link to="/courses/new" onClick={this.closeMenu.bind(this)}>create a course</Link></li>
+          <li className="menu-item"><Link to="/login" onClick={this.onLogoutClick.bind(this)}>logout</Link></li>
         </ul>
       </div>
     )
@@ -31,15 +52,15 @@ class SidebarMenu extends React.Component {
     const guestLinks = (
       <div>
       <ul style={{ listStyle: 'none', paddingTop: '20px', paddingRight: '30px', fontSize: '1.5rem' }}>
-        <li style={{ marginBottom: '20px' }}>home</li>
-        <li style={{ marginBottom: '20px' }}>create an account</li>
-        <li>login</li>
+        <li className="menu-item"><Link to="/" onClick={this.closeMenu.bind(this)}>home</Link></li>
+        <li className="menu-item"><Link to="/register" onClick={this.closeMenu.bind(this)}>create an account</Link></li>
+        <li className="menu-item"><Link to="/login" onClick={this.closeMenu.bind(this)}>login</Link></li>
       </ul>
       </div>
     )
 
     return (
-      <Menu>
+      <Menu isOpen={this.state.menuOpen} closeMenu={this.closeMenu} onStateChange={(state) => this.handleStateChange(state)}>
         {isAuthenticated ? (authLinks) : (guestLinks)}
       </Menu>
     )
