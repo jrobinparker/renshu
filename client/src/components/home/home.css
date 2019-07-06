@@ -1,0 +1,177 @@
+/* background images and positioning */
+#home-background-1 {
+  background: linear-gradient(to top, rgba(116, 235, 213, 0.5), rgba(159,172,230, 1)), url(/assets/tokyo-night.gif) no-repeat center center fixed;
+  height: 100vh;
+  background-size: cover;
+}
+
+#home-background-2 {
+  background: linear-gradient(to bottom, rgba(74, 194, 154, 0.5), rgba(189, 255, 243, .75)), url(/assets/tokyo-blossoms.gif) no-repeat center center fixed;
+  height: 100vh;
+  background-size: cover;
+}
+
+#home-background-3 {
+  background: linear-gradient(to bottom, rgba(178, 254, 250, 0.5), rgba(14, 210, 247, .75)), url(/assets/tokyo-shibuya-crossing.gif) no-repeat center center fixed;
+  height: 100vh;
+  background-size: cover;
+}
+
+/* text and positioning */
+
+.home-welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(192,192,192, .5);
+  text-align: center;
+  z-index: 0;
+}
+
+.home-features {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 5px;
+  background-color: rgba(192,192,192, .5);
+  text-align: center;
+  z-index: 0;
+}
+
+.home-about {
+  position: absolute;
+  top: 250%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 5px;
+  background-color: rgba(192,192,192, .5);
+  text-align: center;
+  z-index: 0;
+}
+
+.home-welcome-text {
+  padding: 10px;
+  font-size: 5vw;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.home-login {
+  display: inline-block;
+  width: 20%;
+  position: relative;
+  left: -10px;
+}
+
+.home-register {
+  display: inline-block;
+  width: 20%;
+  position: relative;
+  right: -10px;
+}
+
+/* login and register buttons */
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 20px;
+  background-color: rgba(192,192,192, .5);
+}
+
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 20px;
+  background-color: rgba(192,192,192, .5);
+}
+
+/* navigation buttons and text */
+
+.home-down-arrow-1 {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-down-arrow-2 {
+  position: absolute;
+  top: 203%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.arrow-text-1 {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  display: none;
+}
+
+.arrow-text-2 {
+  position: absolute;
+  top: 198%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  display: none;
+}
+
+.home-down-arrow-1:hover + .arrow-text-1 {
+  animation: fadeInLoad 1s;
+  display: block;
+}
+
+@keyframes fadeInLoad {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+
+.home-down-arrow-2:hover + .arrow-text-2 {
+  animation: fadeInLoad 1s;
+  display: block;
+}
+
+@keyframes fadeInLoad {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+
+.home-about-developed {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.home-about-developed-text {
+  position: relative;
+  margin-top: 10%;
+  font-size: 1.5rem;
+  font-weight: 700;
+}

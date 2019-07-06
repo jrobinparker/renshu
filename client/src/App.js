@@ -9,6 +9,7 @@ import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 import { clearCurrentProfile } from './actions/profileActions';
 
+import Home from './components/home/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navbar from './components/nav/Navbar';
@@ -53,8 +54,10 @@ class App extends Component {
               <Navbar />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Home} />
                 <div id="page-wrap">
                 <div className="ui container">
+
                 <Switch><PrivateRoute exact path="/dashboard" component={Dashboard} /></Switch>
                 <Switch><PrivateRoute exact path="/profile/create" component={CreateProfile} /></Switch>
                 <Switch><PrivateRoute exact path="/profile/:handle" component={Profile} /></Switch>

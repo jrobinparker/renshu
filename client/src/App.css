@@ -10,13 +10,6 @@ body {
   background-repeat: no-repeat;
 }
 
-#home-background-1 {
-  background: linear-gradient(to top, rgba(116, 235, 213, 0.5), rgba(159,172,230, 1)), url(/assets/tokyo-night.gif) no-repeat center center fixed;
-  height: 100vh;
-  background-size: cover;
-}
-
-
 .renshu-container {
   display: inline-block;
   width: 100%;
