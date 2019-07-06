@@ -1,3 +1,10 @@
+.profile-top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
 .profile-content {
   width: 60%;
   background-color: white;
@@ -36,9 +43,8 @@
 }
 
 .profile-edit-link {
+  font-size: 1.75rem;
   color: black;
-  position: relative;
-  left: 30%;
   cursor: pointer;
 }
 

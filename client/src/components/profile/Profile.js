@@ -45,12 +45,12 @@ class Profile extends React.Component {
             <div className="eight wide column">
 
 
-            <div className="content profile-content with-shadow" >
-              <div style={{ marginBottom: '20px' }}>
-                <h2 style={{ display: 'inline-block', marginRight: '10px' }}>{this.props.profile.profile.handle}</h2>
-                <LevelBadge level={this.props.profile.profile.level} style={{ display: 'inline-block' }} />
-                <Link to={`/profile/${this.props.profile.profile.handle}/edit`}>
-                  <i className="edit outline icon profile-edit-link" style={{ fontSize: '1.75rem' }} />
+            <div className="content profile-content with-shadow">
+              <div className="profile-top">
+                <h2 style={{ display: 'flex', marginRight: '10px' }}>{this.props.profile.profile.handle}</h2>
+                <LevelBadge level={this.props.profile.profile.level} />
+                <Link to={`/profile/${this.props.profile.profile.handle}/edit`} className="profile-edit-link">
+                  <i className="edit outline icon" />
                 </Link>
 
               </div>
