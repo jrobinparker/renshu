@@ -15,7 +15,7 @@ const CourseSliderItem = props => {
 
     return (
 
-      <div className="renshu-container with-shadow">
+      <div className="slider-item with-shadow">
         <div className="content">
           <Link to={`/course/${course._id}`} style={{ display: 'inline-block', fontSize: '1.25rem' }}>{course.title}</Link>
           {didComplete ? (

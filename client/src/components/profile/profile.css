@@ -4,6 +4,7 @@
   border: 1px solid white;
   border-radius: 5px;
   padding: 15px;
+  margin-left: -5px;
 }
 
 .profile-social {
@@ -24,7 +25,7 @@
 .profile-image {
   position: relative;
   left: 45%;
-  top: -5%
+  top: 5%
 }
 
 .profile-edit-link {
@@ -42,6 +43,7 @@
 }
 
 .profile-lessons-courses {
+  margin-top: 20px;
   display: flex;
-  justify-content: center
+  justify-content: center;
 }

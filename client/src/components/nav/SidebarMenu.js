@@ -25,9 +25,9 @@ class SidebarMenu extends React.Component {
   }
 
   onLogoutClick = e => {
+    this.closeMenu()
     this.props.clearCurrentProfile()
     this.props.logoutUser()
-    this.closeMenu()
   }
 
 
@@ -44,7 +44,7 @@ class SidebarMenu extends React.Component {
           <li className="menu-item"><Link to="/courses" onClick={this.closeMenu.bind(this)}>courses</Link></li>
           <li className="menu-item"><Link to="/lessons/new" onClick={this.closeMenu.bind(this)}>create a lesson</Link></li>
           <li className="menu-item"><Link to="/courses/new" onClick={this.closeMenu.bind(this)}>create a course</Link></li>
-          <li className="menu-item"><Link to="/login" onClick={this.onLogoutClick.bind(this)}>logout</Link></li>
+          <li className="menu-item"><Link to="/" onClick={this.onLogoutClick.bind(this)}>logout</Link></li>
         </ul>
       </div>
     )

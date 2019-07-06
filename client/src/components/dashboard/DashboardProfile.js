@@ -13,7 +13,7 @@ const ProfileUserWidget = props => {
           </div>
           <div className="content">
             <div style={{ display: 'inline-block' }}>
-              <h4 style={{ display: 'inline-block', marginLeft: '20px' }}><Link to={`/profile/${profile.handle}`}>{profile.handle}</Link></h4>
+              <h4 style={{ display: 'inline-block' }}><Link to={`/profile/${profile.handle}`}>{profile.handle}</Link></h4>
               <LevelBadge level={profile.level} style={{ display: 'inline-block' }}/>
             </div>
           </div>

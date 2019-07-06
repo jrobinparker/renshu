@@ -34,7 +34,7 @@ class Profile extends React.Component {
         )
       })
       profile = (
-        <div className="ui grid" style={{ marginBottom: '20px' }}>
+        <div className="ui grid">
             <div className="eight wide column">
                   <div className="image profile-image">
                   <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light' alt="profile avatar"

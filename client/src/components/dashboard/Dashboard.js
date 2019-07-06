@@ -111,6 +111,25 @@ class Dashboard extends React.Component {
       )
     }
 
+    if (profile && Object.keys(profile).length > 0 && courses) {
+      completedCourses = courses.filter(course => {
+        return course.completes.find(c => c.user === user.id)
+      })
+
+     if (completedCourses.length >= 1) {
+       dashboardCompletedCourses = <DashboardCompletedCourses courses={completedCourses} />
+     } else {
+      dashboardCompletedCourses = (
+        <div className="six wide column">
+          <div className="dashboard-list" id="with-shadow">
+           <h3 style={{ textAlign: 'center' }}>You haven't completed any courses yet!</h3>
+             <Link className="ui violet button" style={{ width: '100%' }} to='/courses'>Get Started</Link>
+          </div>
+        </div>
+      )
+    }
+    }
+
     userLevelLessons = lessons.filter(lesson => {
         return lesson.level === profile.level
       })
@@ -133,25 +152,6 @@ class Dashboard extends React.Component {
         </div>
     )
 
-    }
-
-    if (profile && Object.keys(profile).length > 0 && courses) {
-      completedCourses = courses.filter(course => {
-        return course.completes.find(c => c.user === user.id)
-      })
-
-     if (completedCourses.length >= 1) {
-       dashboardCompletedCourses = <DashboardCompletedCourses courses={completedCourses} />
-     } else {
-      dashboardCompletedCourses = (
-        <div className="six wide column">
-          <div className="dashboard-list" id="with-shadow">
-           <h3 style={{ textAlign: 'center' }}>You haven't completed any courses yet!</h3>
-             <Link className="ui violet button" style={{ width: '100%' }} to='/courses'>Get Started</Link>
-          </div>
-        </div>
-      )
-    }
     }
 
     if (this.state.newCourse) {
