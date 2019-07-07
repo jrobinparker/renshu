@@ -26,7 +26,7 @@ class SidebarMenu extends React.Component {
 
   onLogoutClick = e => {
     this.closeMenu()
-    this.props.clearCurrentProfile()
+    //this.props.clearCurrentProfile()
     this.props.logoutUser()
   }
 

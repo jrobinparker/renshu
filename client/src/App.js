@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 import PrivateRoute from './utils/PrivateRoute';
 import './App.css';
 import jwt_decode from 'jwt-decode';
@@ -49,6 +50,7 @@ class App extends Component {
   render() {
       return (
         <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
           <Router>
             <div id="App">
               <Navbar />
@@ -77,6 +79,7 @@ class App extends Component {
               </div>
             </div>
           </Router>
+          </PersistGate>
         </Provider>
       );
     }
