@@ -23,13 +23,13 @@ class MyCourses extends React.Component {
   }
 
   render() {
-    const courses = this.props.courses.map(course => {
+    const courses = this.state.courses.map(course => {
       return <MyCourse course={course} handleDeleteCourse={this.handleDeleteCourse} />
       })
 
     let coursesList
 
-    if (this.props.courses.length === 0) {
+    if (this.state.courses.length === 0) {
        coursesList = (
          <React.Fragment>
            <h3>You haven't created any courses yet! Click the button below to create a course.</h3>
@@ -68,4 +68,4 @@ class MyCourses extends React.Component {
   }
 }
 
-export default MyCourses
+export default connect(null, { deleteCourse })(MyCourses)
