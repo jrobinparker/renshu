@@ -101,6 +101,7 @@ class AddLesson extends React.Component {
       title: this.state.title,
       level: this.state.level,
       description: this.state.description,
+      mainContent: this.state.mainContent,
       youtubeURL: this.state.youtubeURL,
       flashCards: this.state.flashCards,
       author: this.props.profile.handle,
