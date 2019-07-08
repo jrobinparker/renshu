@@ -36,6 +36,16 @@ app.use('/api/profile/', profile);
 app.use('/api/lessons/', lessons);
 app.use('/api/courses/', courses);
 
+// Server static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
 const port = process.env.PORT || 5000
 
 app.listen(port, () => console.log(`server running on port ${port}`));
