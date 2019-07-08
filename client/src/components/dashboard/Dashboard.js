@@ -84,7 +84,7 @@ class Dashboard extends React.Component {
             <h1>ようこそ！</h1>
             <p>You haven't set up a profile yet!</p>
             <p>Click the button below to get started.</p>
-            <Link to="/profile/create" className="ui violet button" style={{ width: "100%", marginTop: "20px" }}>
+            <Link to="/create-profile" className="ui violet button" style={{ width: "100%", marginTop: "20px" }}>
               Create Profile
             </Link>
           </div>

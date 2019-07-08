@@ -61,7 +61,7 @@ class App extends Component {
                 <div className="ui container">
 
                 <Switch><PrivateRoute exact path="/dashboard" component={Dashboard} /></Switch>
-                <Switch><PrivateRoute exact path="/profile/create" component={CreateProfile} /></Switch>
+                <Switch><PrivateRoute exact path="/create-profile" component={CreateProfile} /></Switch>
                 <Switch><PrivateRoute exact path="/profile/:handle" component={Profile} /></Switch>
                 <Switch><PrivateRoute exact path="/profile/:handle/edit" component={EditProfile} /></Switch>
                 <Switch><PrivateRoute exact path="/lessons" component={Lessons} /></Switch>
